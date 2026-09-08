@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'korruptsiya-v14.6-pwa-1';
+const CACHE_NAME = 'korruptsiya-v14.7-mobile-1';
 const APP_SHELL = [
   '/',
   '/index.html',

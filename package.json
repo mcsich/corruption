@@ -1,0 +1,13 @@
+{
+  "name": "korruptsiya-v14-6",
+  "version": "14.6.0",
+  "private": true,
+  "description": "KORRUPTSIYA playable web build v14.6",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

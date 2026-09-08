@@ -18,6 +18,8 @@ const MIME = {
   '.svg': 'image/svg+xml; charset=utf-8',
   '.ico': 'image/x-icon',
   '.json': 'application/json; charset=utf-8',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
 };
 
@@ -89,6 +91,22 @@ const server = http.createServer((req, res) => {
 
   if (pathname === '/' || pathname === '/index.html') {
     return serveFile(req, res, path.join(ROOT, 'index.html'), 'no-cache');
+  }
+
+  if (pathname === '/manifest.webmanifest') {
+    return serveFile(req, res, path.join(ROOT, 'manifest.webmanifest'), 'no-cache');
+  }
+
+  if (pathname === '/service-worker.js') {
+    return serveFile(req, res, path.join(ROOT, 'service-worker.js'), 'no-cache');
+  }
+
+  if (pathname.startsWith('/icons/')) {
+    const relative = pathname.slice(1);
+    const target = path.resolve(ROOT, relative);
+    const iconsRoot = path.resolve(ROOT, 'icons') + path.sep;
+    if (!target.startsWith(iconsRoot)) return send(res, 403, 'Forbidden');
+    return serveFile(req, res, target, 'public, max-age=86400');
   }
 
   if (pathname.startsWith('/assets/')) {

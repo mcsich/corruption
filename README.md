@@ -53,3 +53,16 @@ git push -u origin main
 - Не переименовывай папку `assets/`: пути к изображениям уже зашиты в `index.html`.
 - Сохранения игры хранятся в `localStorage` браузера конкретного домена. Если позже поменять Railway-домен, браузер будет считать это другим сайтом.
 - Этот deploy-пакет намеренно не содержит QA-отчётов, spoiler matrices и внутренних файлов разработки.
+
+## PWA icon / installation
+
+This deploy package includes a complete PWA icon set and manifest:
+
+- `manifest.webmanifest`
+- `service-worker.js`
+- `icons/icon-192.png`
+- `icons/icon-512.png`
+- `icons/icon-maskable-512.png`
+- `icons/apple-touch-icon.png`
+
+After deploying over HTTPS, Android/Chrome can install the game as a standalone PWA. On iPhone/iPad, Safari's **Add to Home Screen** uses the included Apple Touch Icon.
